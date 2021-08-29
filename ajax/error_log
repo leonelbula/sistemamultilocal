@@ -1,0 +1,38 @@
+[09-Feb-2021 20:32:23 UTC] PHP Notice:  Undefined index: idsucursal in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 26
+[09-Feb-2021 20:32:23 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function ListaInventario::MostrarProductos(), 0 passed in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 28 and exactly 1 expected in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php:12
+Stack trace:
+#0 /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php(28): ListaInventario->MostrarProductos()
+#1 /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php(93): InventarioAjax->MostrarProdcutos()
+#2 {main}
+  thrown in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 12
+[09-Feb-2021 20:33:26 UTC] PHP Notice:  Undefined index: idsucursal in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 26
+[09-Feb-2021 20:33:26 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function ListaInventario::MostrarProductos(), 0 passed in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 28 and exactly 1 expected in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php:12
+Stack trace:
+#0 /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php(28): ListaInventario->MostrarProductos()
+#1 /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php(93): InventarioAjax->MostrarProdcutos()
+#2 {main}
+  thrown in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 12
+[09-Feb-2021 20:35:05 UTC] PHP Notice:  Undefined index: idsucursal in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 26
+[09-Feb-2021 20:35:05 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php:34
+Stack trace:
+#0 /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php(93): InventarioAjax->MostrarProdcutos()
+#1 {main}
+  thrown in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 34
+[16-Mar-2021 19:45:14 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function ListaInventario::MostrarProductos(), 0 passed in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 29 and exactly 1 expected in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php:12
+Stack trace:
+#0 /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php(29): ListaInventario->MostrarProductos()
+#1 /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php(94): InventarioAjax->MostrarProdcutos()
+#2 {main}
+  thrown in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 12
+[16-Mar-2021 19:45:38 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function ListaInventario::MostrarProductos(), 0 passed in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 29 and exactly 1 expected in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php:12
+Stack trace:
+#0 /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php(29): ListaInventario->MostrarProductos()
+#1 /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php(94): InventarioAjax->MostrarProdcutos()
+#2 {main}
+  thrown in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 12
+[16-Mar-2021 19:46:28 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function ListaInventario::MostrarProductos(), 0 passed in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 29 and exactly 1 expected in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php:12
+Stack trace:
+#0 /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php(29): ListaInventario->MostrarProductos()
+#1 /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php(94): InventarioAjax->MostrarProdcutos()
+#2 {main}
+  thrown in /home/u727057842/domains/sacvadmin.com/public_html/ajax/tablaproducto.php on line 12
