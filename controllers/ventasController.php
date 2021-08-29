@@ -97,51 +97,75 @@ class ventasController {
    }
 
    public function guardarinicioventa() {
+
+      date_default_timezone_set('America/Bogota');
+
       if ($_POST['basecaja']) {
-         date_default_timezone_set('America/Bogota');
 
          $id_sucursal = $_POST['idsucursal'];
          $fechainicio = $_POST['fecha'];
-         $fechacierre = date('Y-m-d');
-         $basecaja = $_POST['basecaja'];
-         $totalingresos = 0;
-         $totalgastos = 0;
-         $otrosmedio = 0;
-         $noexistente = 0;
-         $plansepare = 0;
-         $abonocliente = 0;
-         $devolucion = 0;
-         $montoentregado = 0;
-         $diferencia = 0;
-         $estado = 1;
 
-         $inicioventa = new IniciarVenta();
+         $verificarDate = new IniciarVenta();
+         $dataRest = $verificarDate->VerificarFecha($id_sucursal, $fechainicio);
+         
+       
+         if ($dataRest->num_rows == 1) {
+            echo'<script>
 
-         $inicioventa->setId_sucursal($id_sucursal);
-         $inicioventa->setFechainicio($fechainicio);
-         $inicioventa->setFechacierre($fechacierre);
-         $inicioventa->setBasecaja($basecaja);
-         $inicioventa->setTotalingresos($totalingresos);
-         $inicioventa->setTotalgastos($totalgastos);
-         $inicioventa->setOtrosmedio($otrosmedio);
-         $inicioventa->setNoexistente($noexistente);
-         $inicioventa->setPlansepare($plansepare);
-         $inicioventa->setAbonocliente($abonocliente);
-         $inicioventa->setDevolucion($devolucion);
-         $inicioventa->setMontoentregado($montoentregado);
-         $inicioventa->setDiferencia($diferencia);
-         $inicioventa->setEstado($estado);
+                     swal({
+                               type: "error",
+                               title: "¡Las ventas del '.$fechainicio.' ya fueron registrada !",
+                                showConfirmButton: false,
+                                 timer: 2500,                                                   
+                                }).then(function() {
+                              window.location = "iniciarventa";
+                          })
 
-         $response = $inicioventa->MostrarCierresActivos();
+             </script>';
+         } else {
 
 
 
-         if ($response->num_rows == 0) {
+            $fechacierre = date('Y-m-d');
+            $basecaja = $_POST['basecaja'];
+            $totalingresos = 0;
+            $totalgastos = 0;
+            $otrosmedio = 0;
+            $noexistente = 0;
+            $plansepare = 0;
+            $abonocliente = 0;
+            $devolucion = 0;
+            $montoentregado = 0;
+            $diferencia = 0;
+            $estado = 1;
 
-            $resp = $inicioventa->IniciarVenta();
+            $inicioventa = new IniciarVenta();
 
-            if ($resp) {
-               echo'<script>
+            $inicioventa->setId_sucursal($id_sucursal);
+            $inicioventa->setFechainicio($fechainicio);
+            $inicioventa->setFechacierre($fechacierre);
+            $inicioventa->setBasecaja($basecaja);
+            $inicioventa->setTotalingresos($totalingresos);
+            $inicioventa->setTotalgastos($totalgastos);
+            $inicioventa->setOtrosmedio($otrosmedio);
+            $inicioventa->setNoexistente($noexistente);
+            $inicioventa->setPlansepare($plansepare);
+            $inicioventa->setAbonocliente($abonocliente);
+            $inicioventa->setDevolucion($devolucion);
+            $inicioventa->setMontoentregado($montoentregado);
+            $inicioventa->setDiferencia($diferencia);
+            $inicioventa->setEstado($estado);
+
+            $response = $inicioventa->MostrarCierresActivos();
+
+
+            if ($response->num_rows == 0) {
+
+               $resp = $inicioventa->IniciarVenta();
+
+
+               if ($resp) {
+                  echo'<script>
 
 					swal({
 						  type: "success",
@@ -153,8 +177,8 @@ class ventasController {
                                             })
 
 					</script>';
-            } else {
-               echo'<script>
+               } else {
+                  echo'<script>
 
 					swal({
 						  type: "error",
@@ -166,9 +190,9 @@ class ventasController {
                                             })
 
 			  	</script>';
-            }
-         } else {
-            echo'<script>
+               }
+            } else {
+               echo'<script>
 
 					swal({
 						  type: "success",
@@ -180,6 +204,7 @@ class ventasController {
                                             })
 
 					</script>';
+            }
          }
       } else {
          echo'<script>
