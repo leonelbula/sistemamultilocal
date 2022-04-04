@@ -38,7 +38,7 @@ class Categoria extends ModeloBase {
    }
 
    public function MostrarCategoria() {
-      $sql = "SELECT * FROM categoria";
+      $sql = "SELECT * FROM categoria WHERE id_sucursal = {$this->getId_sucursal()}";
       $resul = $this->db->query($sql);
       return $resul;
    }

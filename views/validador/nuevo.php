@@ -3,7 +3,7 @@
    <!-- Content Header (Page header) -->
    <section class="content-header">
       <h1>
-         Iniciar punto de ventas
+         Iniciar
 
       </h1>
       <ol class="breadcrumb">
@@ -100,7 +100,7 @@ foreach ($lista as $key => $value) :
                         </td>
                         <td>
                            <form method="post" action="<?= URL_BASE ?>validarinventario/actulizarSobrantes">
-                              <input type="hidden" name="estado" value="1"><input type="submit" class="btn btn-success" value="Corregir Cantidades"></form>
+                              <input type="hidden" name="id" value="<?= $value['id'] ?>"><input type="submit" class="btn btn-success" value="Corregir Cantidades"></form>
                         </td>
                          <td>
 
@@ -116,7 +116,7 @@ foreach ($lista as $key => $value) :
          </div>
          <!-- /.box-body -->
          <div class="box-footer">
-            Iniciar Ventas
+            Iniciar 
          </div>
          <!-- /.box-footer-->
       </div>
@@ -197,7 +197,7 @@ foreach ($lista as $key => $value) :
 
       <div class="modal-content">
 
-         <form action="<?= URL_BASE ?>ventas/guardarcierreventa" method="POST">
+         <form action="<?= URL_BASE ?>validarinventario/update" method="POST">
             <input type="hidden" class="idsucursal" name="idsucursal" id="idsucursal" value="<?= $id_sucursal ?>">
 
 
@@ -209,7 +209,7 @@ foreach ($lista as $key => $value) :
 
                <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-               <h4 class="modal-title">Cerrar venta Diaria</h4>
+               <h4 class="modal-title">Cerrar</h4>
 
             </div>
 
@@ -232,19 +232,7 @@ foreach ($lista as $key => $value) :
 
                   </div>     
                  
-                  <div class="form-group">
-
-                     <div class="input-group">
-
-                        <span class="input-group-addon"><i class="fa fa-th"></i></span>
-
-                        <input type="number" name="caja"  placeholder="Ingrese Valor total" class="form-control input-lg" required />
-
-                     </div> 
-
-                  </div>     
-
-
+                  
                </div>
 
             </div>
@@ -257,7 +245,7 @@ foreach ($lista as $key => $value) :
 
                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-               <button type="submit" class="btn btn-primary">Cerrar Ventas</button>
+               <button type="submit" class="btn btn-primary">Cerrar Inventario</button>
 
             </div>
 

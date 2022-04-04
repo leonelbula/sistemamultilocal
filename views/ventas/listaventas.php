@@ -41,7 +41,7 @@
                <a href="<?= URL_BASE ?>ventas/nuevaventa">
                   <button class="btn btn-primary">
 
-                     Nuevo venta
+                     Nueva venta
 
                   </button>
                </a>
@@ -79,8 +79,15 @@
 
 			    </button>
                      <?php endif; ?>
+               <a href="<?= URL_BASE ?>extensiones/tcpdf/pdf/productos_ticket.php" target="_blank">
+                  <button class="btn btn-primary">
+
+                     Productos
+
+                  </button>
+               </a>
             </div>
-      
+  
          </div>
          <div class="box-body">
             <table id="ventasRealizadas" class=" table table-bordered table-striped dt-responsive ventasRealizadas" style="width:100%">

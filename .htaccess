@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
 # Activar rewrite
 RewriteEngine on
-ErrorDocument 404 http://localhost:8088/sacv/error/index
+ErrorDocument 404 http://localhost/sacvadmin/error/index
 
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f

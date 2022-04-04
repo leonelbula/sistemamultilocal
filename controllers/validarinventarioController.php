@@ -4,37 +4,43 @@ require_once 'models/Inventario.php';
 require_once 'models/NuevoInventario.php';
 require_once 'models/Conteo.php';
 
-class validarinventarioController {
+class validarinventarioController
+{
 
-   public function index() {
+   public function index()
+   {
       require_once 'views/layout/menu.php';
       require_once 'views/validador/index.php';
       require_once 'views/layout/copy.php';
    }
 
-   public function nuevo() {
+   public function nuevo()
+   {
       require_once 'views/layout/menu.php';
       require_once 'views/validador/nuevo.php';
       require_once 'views/layout/copy.php';
    }
 
-   public function validar() {
+   public function validar()
+   {
       require_once 'views/layout/menu.php';
       require_once 'views/validador/validar.php';
       require_once 'views/layout/copy.php';
    }
 
-   static public function verificarestado() {
+   static public function verificarestado()
+   {
       $data = new NuevoInventario();
       $resp = $data->verActivos();
       return $resp;
    }
 
-   public function savestart() {
+   public function savestart()
+   {
       if (isset($_POST['fecha'])) {
 
          $fechaInicio = $_POST['fecha'];
-         $fechaFinal = '0000-00-00';
+         $fechaFinal = '2100-10-10';
          $estado = 1;
 
          $data = new NuevoInventario();
@@ -44,7 +50,7 @@ class validarinventarioController {
          $resp = $data->Save();
 
          if ($resp) {
-            echo'  <script>
+            echo '  <script>
 
                         swal({
                                   type: "success",
@@ -57,7 +63,7 @@ class validarinventarioController {
 
                         </script>';
          } else {
-            echo'  <script>
+            echo '  <script>
 
                         swal({
                                   type: "error",
@@ -71,7 +77,7 @@ class validarinventarioController {
                         </script>';
          }
       } else {
-         echo'  <script>
+         echo '  <script>
 
                         swal({
                                   type: "error",
@@ -86,7 +92,64 @@ class validarinventarioController {
       }
    }
 
-   public function save() {
+   public function update()
+   {
+      if (isset($_POST['fecha'])) {
+
+
+         $fechaFinal = $_POST['fecha'];
+         $estado = 0;
+
+         $data = new NuevoInventario();
+         $data->setFechafinal($fechaFinal);
+         $data->setEstado($estado);
+         $resp = $data->Update();
+
+         if ($resp) {
+            echo '  <script>
+
+                        swal({
+                                  type: "success",
+                                  title: "Inventaro finalizado Correctamente",
+                                  showConfirmButton: false,
+                                   timer: 1500,                                                   
+                                  }).then(function() {
+                                window.location = "nuevo";
+                            })
+
+                        </script>';
+         } else {
+            echo '  <script>
+
+                        swal({
+                                  type: "error",
+                                  title: "Registro no Guardado",
+                                  showConfirmButton: false,
+                                   timer: 1500,                                                   
+                                  }).then(function() {
+                                window.location = "nuevo";
+                            })
+
+                        </script>';
+         }
+      } else {
+         echo '  <script>
+
+                        swal({
+                                  type: "error",
+                                  title: "Registro no guardado debe seleccionar la fecha ",
+                                  showConfirmButton: false,
+                                   timer: 1500,                                                   
+                                  }).then(function() {
+                                window.location = "nuevo";
+                            })
+
+                        </script>';
+      }
+   }
+
+   public function save()
+   {
 
       if (isset($_POST['Idproducto']) & !empty($_POST['Idproducto'])) {
 
@@ -149,11 +212,11 @@ class validarinventarioController {
             $conteo->setValor_diferencia($valor_diferencia);
             $resp = $conteo->Save();
          }
-     
-         
+
+
 
          if ($resp) {
-            echo'  <script>
+            echo '  <script>
 
                         swal({
                                   type: "success",
@@ -166,7 +229,7 @@ class validarinventarioController {
 
                         </script>';
          } else {
-            echo'  <script>
+            echo '  <script>
 
                         swal({
                                   type: "error",
@@ -180,7 +243,7 @@ class validarinventarioController {
                         </script>';
          }
       } else {
-         echo'  <script>
+         echo '  <script>
 
                         swal({
                                   type: "error",
@@ -194,28 +257,49 @@ class validarinventarioController {
                         </script>';
       }
    }
-   
-   public function actulizarSobrantes() {
-      if(isset($_POST['estado'])==1){
-         
-         $conteo = new Conteo();
-         $productoConteo = $conteo->MostrarDescuadre();
-         
-         foreach($productoConteo as $key => $value){
-            $id_producto = $value['id_producto'];
-            $cantidadContada = $value['contado'];
-            
-            
-            
-            $inventario = new Inventario();
-            $inventario->setId_producto($id_producto);
-            $inventario->setCantidad_Inicial($cantidadContada);
-            $resp = $inventario->ActulizarStock();
-            
+
+   public function actulizarSobrantes()
+   {
+      if ($_POST['id']) {
+
+         $data = new NuevoInventario();
+         $id = $_POST['id'];
+         $data->setId($id);
+         $resp = $data->verActivosId();
+         foreach ($resp as $resul) {
+            $estado = $resul['estado'];
          }
-        
-         if($resp){
-             echo'  <script>
+         if ($estado == 0) {
+            echo '  <script>
+
+                        swal({
+                                  type: "error",
+                                  title: "Registro ya fue validado ",
+                                  showConfirmButton: false,
+                                   timer: 1500,                                                   
+                                  }).then(function() {
+                                window.location = "nuevo";
+                            })
+
+                        </script>';
+         } else {
+            $conteo = new Conteo();
+            $productoConteo = $conteo->MostrarDescuadre();
+
+            foreach ($productoConteo as $key => $value) {
+               $id_producto = $value['id_producto'];
+               $cantidadContada = $value['contado'];
+
+
+
+               $inventario = new Inventario();
+               $inventario->setId_producto($id_producto);
+               $inventario->setCantidad_Inicial($cantidadContada);
+               $resp = $inventario->ActulizarStock();
+            }
+
+            if ($resp) {
+               echo '  <script>
 
                         swal({
                                   type: "success",
@@ -227,8 +311,8 @@ class validarinventarioController {
                             })
 
                         </script>';
-         }else{
-             echo'  <script>
+            } else {
+               echo '  <script>
 
                         swal({
                                   type: "error",
@@ -240,14 +324,14 @@ class validarinventarioController {
                             })
 
                         </script>';
+            }
          }
-         
-      }else{
-         echo'  <script>
+      } else {
+         echo '  <script>
 
                         swal({
                                   type: "error",
-                                  title: "Registro no validado ",
+                                  title: "Error ",
                                   showConfirmButton: false,
                                    timer: 1500,                                                   
                                   }).then(function() {
@@ -257,36 +341,31 @@ class validarinventarioController {
                         </script>';
       }
    }
-   
-   public function compararconteo() {
+
+   public function compararconteo()
+   {
       $inventario = new Inventario();
       $productoLocal = $inventario->MostrarProductos();
-      
-      
-      
+
+
+
       while ($row = $productoLocal->fetch_object()) {
-         $id_producto = $row->id; 
+         $id_producto = $row->id;
          $nombre = $row->nombre;
          $cantidad = $row->cantidad_min;
          $costo = $row->costo;
-         
+
          $conteo = new Conteo();
          $conteo->setId_producto($id_producto);
          $lista = $conteo->MostrarConteoId();
-         
-         
-         if($lista->num_rows == 0 && $cantidad != 0){
+
+
+         if ($lista->num_rows == 0 && $cantidad != 0) {
             $valor = $costo * $cantidad;
-            echo $nombre.' no fue contado '.$cantidad.'  valor '.$valor.'<br>';
-            
-            
+            echo $nombre . ' no fue contado ' . $cantidad . '  valor ' . $valor . '<br>';
          }
-                
-               
-         
       }
       $conteo = new Conteo();
       $datosConteo = $conteo->MostrarConteo();
    }
-
 }

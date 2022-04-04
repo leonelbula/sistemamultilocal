@@ -48,16 +48,30 @@ class NuevoInventario{
    }
    
    public function verActivos() {
-      $sql = "SELECT * FROM nuevoinventario WHERE estado = 1";
+      $sql = "SELECT * FROM nuevoinventario";
       $rept = $this->db->query($sql);
       return $rept;
    }
-   
+   public function verActivosId() {
+      $sql = "SELECT * FROM nuevoinventario WHERE id = {$this->getId()}";
+      $rept = $this->db->query($sql);
+      return $rept;
+   }
      public function Save() {
       $sql = "INSERT INTO nuevoinventario VALUES (NULL,"
               . "'{$this->getFechainicio()}',"
               . "'{$this->getFechafinal()}',"
               . "{$this->getEstado()})";
+      $rept = $this->db->query($sql);
+      
+      $resul = false;
+      if($rept){
+         $resul = true;
+      }
+      return $sql;
+   }
+   public function Update() {
+      $sql = "UPDATE nuevoinventario SET fechafinal='{$this->getFechafinal()}',estado = {$this->getEstado()} WHERE estado = 1";
       $rept = $this->db->query($sql);
       
       $resul = false;

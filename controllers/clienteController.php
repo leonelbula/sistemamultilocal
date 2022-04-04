@@ -48,15 +48,11 @@ class ClienteController {
 					swal({
 						  type: "error",
 						  title: "¡Debe selecionar cliente a Editar!",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
-
-							window.location = "index";
-
-							}
-						})
+						  showConfirmButton: false,
+                           timer: 1500,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })
 
 			  	</script>';
       }
@@ -96,15 +92,11 @@ class ClienteController {
 					swal({
 						  type: "success",
 						  title: "Cliente Guardado Correctamente",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
-
-							window.location = "index";
-
-							}
-						})
+						   showConfirmButton: false,
+                           timer: 1500,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })
 
 					</script>';
             } else {
@@ -113,15 +105,11 @@ class ClienteController {
 					swal({
 						  type: "error",
 						  title: "¡Registro no Guardado !",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
-
-							window.location = "index";
-
-							}
-						})
+						  showConfirmButton: false,
+                           timer: 1500,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })
 
 			  	</script>';
             }
@@ -160,15 +148,11 @@ class ClienteController {
 					swal({
 						  type: "success",
 						  title: "Informacion Guardada Correctamente",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
-
-							window.location = "index";
-
-							}
-						})
+						 showConfirmButton: false,
+                           timer: 1500,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })
 
 					</script>';
             } else {
@@ -177,15 +161,11 @@ class ClienteController {
 					swal({
 						  type: "error",
 						  title: "¡Registro no Guardado !",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
-
-							window.location = "index";
-
-							}
-						})
+						  showConfirmButton: false,
+                           timer: 1500,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })
 
 			  	</script>';
             }
@@ -196,15 +176,11 @@ class ClienteController {
 					swal({
 						  type: "error",
 						  title: "¡Registro no Guardado !",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
-
-							window.location = "index";
-
-							}
-						})
+						  showConfirmButton: false,
+                           timer: 1500,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })
 
 		</script>';
       }
@@ -215,42 +191,51 @@ class ClienteController {
          $id = $_GET['id'];
          $Cliente = new Cliente();
          $Cliente->setId($id);
-         $resp = $Cliente->Eliminar();
-         if ($resp) {
-            echo'<script>
-
-					swal({
-						  type: "success",
-						  title: "Cliente Eliminado Correctamente",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
-
-							window.location = "index";
-
-							}
-						})
+         $resul = $Cliente->ventasAsociadas();
+        
+         if ($resul->num_rows != 0) {
+             echo'<script>
+         
+                     swal({
+                          type: "error",
+                          title: "¡Cliente no Eliminado, tiene ventas Registradas !",
+                           showConfirmButton: false,
+                           timer: 2000,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })
 
 					</script>';
-         } else {
-            echo'<script>
-
-					swal({
-						  type: "error",
-						  title: "¡Registro no Eliminado !",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
-
-							window.location = "index";
-
-							}
-						})
-
-			  	</script>';
+         } else {            
+            $resp = $Cliente->Eliminar();
+            if ($resp) {
+               echo'<script>
+   
+                  swal({
+                       type: "success",
+                       title: "Cliente Eliminado Correctamente",
+                      showConfirmButton: false,
+                           timer: 1500,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })
+   
+                  </script>';
+               } else {
+                  echo'<script>
+         
+                     swal({
+                          type: "error",
+                          title: "¡Registro no Eliminado !",
+                           showConfirmButton: false,
+                           timer: 1500,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })         
+                    </script>';
+               }
          }
+         
       } else {
          echo'<script>
 
@@ -285,16 +270,12 @@ class ClienteController {
 
 					swal({
 						  type: "error",
-						  title: "¡Debe selecionar proveedor a Editar!",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
-
-							window.location = "index";
-
-							}
-						})
+						  title: "¡Debe selecionar un registro a Editar!",
+						  showConfirmButton: false,
+                           timer: 1500,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })
 
 			  	</script>';
       }
@@ -337,15 +318,11 @@ class ClienteController {
 					swal({
 						  type: "error",
 						  title: "¡Debe selecionar cliente a Editar!",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
-
-							window.location = "index";
-
-							}
-						})
+						   showConfirmButton: false,
+                           timer: 1500,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })
 
 			  	</script>';
       }
@@ -368,16 +345,11 @@ class ClienteController {
 					swal({
 						  type: "error",
 						  title: "¡Debe selecionar cliente!",
-						  showConfirmButton: true,
-						  confirmButtonText: "Cerrar"
-						  }).then(function(result){
-							if (result.value) {
-
-							window.location = "index";
-
-							}
-						})
-
+						  showConfirmButton: false,
+                           timer: 1500,                                                   
+                            }).then(function() {
+                                  window.location = "index";
+                            })
 			  	</script>';
       }
 

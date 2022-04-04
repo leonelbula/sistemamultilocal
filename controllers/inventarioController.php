@@ -48,7 +48,7 @@ class InventarioController {
 
          $id_sucursal = isset($_POST['idSucursal']) ? $_POST['idSucursal'] : FALSE;
          $codigoD = isset($_POST['codigo']) ? $_POST['codigo'] : FALSE;
-         $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : FALSE;
+         $nombre1 = isset($_POST['nombre']) ? $_POST['nombre'] : FALSE;
          $costo = isset($_POST['costo']) ? $_POST['costo'] : FALSE;
          $precioventa = isset($_POST['Precioventa']) ? $_POST['Precioventa'] : FALSE;
          $utilidad = isset($_POST['Utilidad']) ? $_POST['Utilidad'] : FALSE;
@@ -58,6 +58,8 @@ class InventarioController {
          $codigo_vendedor = isset($_POST['codigo_vendedor']) ? $_POST['codigo_vendedor'] : FALSE;
          $id_proveedor = isset($_POST['id_vendedor']) ? $_POST['id_vendedor'] : FALSE;
 
+         $nombre = preg_replace('/[@\.\;\""]+/', '', $nombre1);
+         
          if ($costo && $nombre && $precioventa) {
 
             $par = new Parametros();

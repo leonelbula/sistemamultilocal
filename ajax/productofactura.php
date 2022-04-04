@@ -10,7 +10,7 @@ class ListaProductoFactura {
 	}	
 
 	public function MostrarProductos($id_sucursal) {
-		$sql = "SELECT * FROM product WHERE id_sucursal = $id_sucursal";
+		$sql = "SELECT *  FROM product WHERE id_sucursal = $id_sucursal";
 		$resul = $this->db->query($sql);
 		return $resul;
 	}

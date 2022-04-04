@@ -228,4 +228,13 @@ class ParametrosController{
 			
 		}
 	}
+   public function cargarInventario() {
+      	require_once 'views/layout/menu.php';
+         require_once 'extensiones/PHPExcel/Clases/PHPExel/IOFactory.php';
+         if (isset($_post['archivo'])) {
+            var_dump($_post);
+         }
+	   	require_once 'views/parametros/cargarInventario.php';
+	   	require_once 'views/layout/copy.php';
+   }
 }

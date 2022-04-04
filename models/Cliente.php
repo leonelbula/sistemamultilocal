@@ -144,6 +144,11 @@ class Cliente{
 		$resul = $this->db->query($sql);
 		return $resul;
 	}
+   public function ventasAsociadas(){
+      $sql = "SELECT * FROM venta WHERE id_cliente = {$this->getId()}";
+      $result = $this->db->query($sql);    
+      return $result;
+   }
 	public function Guargar() {
 		$sql = "INSERT INTO cliente VALUES (NULL,"
                         . "{$this->getId_sucursal()},"
