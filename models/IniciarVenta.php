@@ -166,7 +166,11 @@ class IniciarVenta {
 		$resul = $this->db->query($sql);
 		return $resul;
 	}
+<<<<<<< HEAD
         public function VerificarFecha($id,$fechaFinal) {
+=======
+	public function VerificarFecha($id,$fechaFinal) {
+>>>>>>> a2e99d897216e498fe1266ed95bd57d1d659ea33
 		$sql = "SELECT * FROM iniciar_punto_venta WHERE fecha_inicio like '%$fechaFinal%' AND id_sucursal = $id";
 		$resul = $this->db->query($sql);                
 		return $resul;
