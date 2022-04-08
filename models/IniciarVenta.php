@@ -4,226 +4,226 @@ require_once 'config/DataBase.php';
 
 class IniciarVenta {
 
-	public $db;
-	
-	private $id;
-        private $id_sucursal;
-        private $fechainicio;
-	private $fechacierre;
-	private $basecaja;
-	private $totalingresos;
-	private $totalgastos;
-        private $otrosmedio;
-        private $noexistente;
-        private $plansepare;
-        private $abonocliente;
-        private $devolucion;
-        private $montoentregado;
-	private $diferencia;
-	private $estado;
-        
-        
-        function getId() {
-           return $this->id;
-        }
+    public $db;
+    private $id;
+    private $id_sucursal;
+    private $fechainicio;
+    private $fechacierre;
+    private $basecaja;
+    private $totalingresos;
+    private $totalgastos;
+    private $otrosmedio;
+    private $noexistente;
+    private $plansepare;
+    private $abonocliente;
+    private $devolucion;
+    private $montoentregado;
+    private $diferencia;
+    private $estado;
 
-        function getId_sucursal() {
-           return $this->id_sucursal;
-        }
+    function getId() {
+        return $this->id;
+    }
 
-        function getFechainicio() {
-           return $this->fechainicio;
-        }
+    function getId_sucursal() {
+        return $this->id_sucursal;
+    }
 
-        function getFechacierre() {
-           return $this->fechacierre;
-        }
+    function getFechainicio() {
+        return $this->fechainicio;
+    }
 
-        function getBasecaja() {
-           return $this->basecaja;
-        }
+    function getFechacierre() {
+        return $this->fechacierre;
+    }
 
-        function getTotalingresos() {
-           return $this->totalingresos;
-        }
+    function getBasecaja() {
+        return $this->basecaja;
+    }
 
-        function getTotalgastos() {
-           return $this->totalgastos;
-        }
+    function getTotalingresos() {
+        return $this->totalingresos;
+    }
 
-        function getOtrosmedio() {
-           return $this->otrosmedio;
-        }
+    function getTotalgastos() {
+        return $this->totalgastos;
+    }
 
-        function getNoexistente() {
-           return $this->noexistente;
-        }
+    function getOtrosmedio() {
+        return $this->otrosmedio;
+    }
 
-        function getPlansepare() {
-           return $this->plansepare;
-        }
+    function getNoexistente() {
+        return $this->noexistente;
+    }
 
-        function getAbonocliente() {
-           return $this->abonocliente;
-        }
+    function getPlansepare() {
+        return $this->plansepare;
+    }
 
-        function getDevolucion() {
-           return $this->devolucion;
-        }
+    function getAbonocliente() {
+        return $this->abonocliente;
+    }
 
-        function getMontoentregado() {
-           return $this->montoentregado;
-        }
+    function getDevolucion() {
+        return $this->devolucion;
+    }
 
-        function getDiferencia() {
-           return $this->diferencia;
-        }
+    function getMontoentregado() {
+        return $this->montoentregado;
+    }
 
-        function getEstado() {
-           return $this->estado;
-        }
+    function getDiferencia() {
+        return $this->diferencia;
+    }
 
-        function setId($id) {
-           $this->id = $id;
-        }
+    function getEstado() {
+        return $this->estado;
+    }
 
-        function setId_sucursal($id_sucursal) {
-           $this->id_sucursal = $id_sucursal;
-        }
+    function setId($id) {
+        $this->id = $id;
+    }
 
-        function setFechainicio($fechainicio) {
-           $this->fechainicio = $fechainicio;
-        }
+    function setId_sucursal($id_sucursal) {
+        $this->id_sucursal = $id_sucursal;
+    }
 
-        function setFechacierre($fechacierre) {
-           $this->fechacierre = $fechacierre;
-        }
+    function setFechainicio($fechainicio) {
+        $this->fechainicio = $fechainicio;
+    }
 
-        function setBasecaja($basecaja) {
-           $this->basecaja = $basecaja;
-        }
+    function setFechacierre($fechacierre) {
+        $this->fechacierre = $fechacierre;
+    }
 
-        function setTotalingresos($totalingresos) {
-           $this->totalingresos = $totalingresos;
-        }
+    function setBasecaja($basecaja) {
+        $this->basecaja = $basecaja;
+    }
 
-        function setTotalgastos($totalgastos) {
-           $this->totalgastos = $totalgastos;
-        }
+    function setTotalingresos($totalingresos) {
+        $this->totalingresos = $totalingresos;
+    }
 
-        function setOtrosmedio($otrosmedio) {
-           $this->otrosmedio = $otrosmedio;
-        }
+    function setTotalgastos($totalgastos) {
+        $this->totalgastos = $totalgastos;
+    }
 
-        function setNoexistente($noexistente) {
-           $this->noexistente = $noexistente;
-        }
+    function setOtrosmedio($otrosmedio) {
+        $this->otrosmedio = $otrosmedio;
+    }
 
-        function setPlansepare($plansepare) {
-           $this->plansepare = $plansepare;
-        }
+    function setNoexistente($noexistente) {
+        $this->noexistente = $noexistente;
+    }
 
-        function setAbonocliente($abonocliente) {
-           $this->abonocliente = $abonocliente;
-        }
+    function setPlansepare($plansepare) {
+        $this->plansepare = $plansepare;
+    }
 
-        function setDevolucion($devolucion) {
-           $this->devolucion = $devolucion;
-        }
+    function setAbonocliente($abonocliente) {
+        $this->abonocliente = $abonocliente;
+    }
 
-        function setMontoentregado($montoentregado) {
-           $this->montoentregado = $montoentregado;
-        }
+    function setDevolucion($devolucion) {
+        $this->devolucion = $devolucion;
+    }
 
-        function setDiferencia($diferencia) {
-           $this->diferencia = $diferencia;
-        }
+    function setMontoentregado($montoentregado) {
+        $this->montoentregado = $montoentregado;
+    }
 
-        function setEstado($estado) {
-           $this->estado = $estado;
-        }
+    function setDiferencia($diferencia) {
+        $this->diferencia = $diferencia;
+    }
 
-                	
-	
-	public function __construct() {
-		$this->db = Database::connect();
-	}
-	
-	public function MostrarCierres() {
-		$sql = "SELECT * FROM iniciar_punto_venta  WHERE id_sucursal = {$this->getId_sucursal()} AND estado = 0 ORDER BY id DESC";
-		$resul = $this->db->query($sql);
-		return $resul;
-	}
-        public function MostrarCierresActivos() {
-		$sql = "SELECT * FROM iniciar_punto_venta  "
-                        . "WHERE id_sucursal = {$this->getId_sucursal()} "
-                        . "AND estado = 1";                        
-		$resul = $this->db->query($sql);
-		return $resul;
-	}
-	public function VerCierres() {
-		$sql = "SELECT * FROM iniciar_punto_venta  WHERE id = {$this->getId()}";
-		$resul = $this->db->query($sql);
-		return $resul;
-	}
-<<<<<<< HEAD
-        public function VerificarFecha($id,$fechaFinal) {
-=======
-	public function VerificarFecha($id,$fechaFinal) {
->>>>>>> a2e99d897216e498fe1266ed95bd57d1d659ea33
-		$sql = "SELECT * FROM iniciar_punto_venta WHERE fecha_inicio like '%$fechaFinal%' AND id_sucursal = $id";
-		$resul = $this->db->query($sql);                
-		return $resul;
-	}
-	public function ventasActivas() {
-		$sql = "SELECT * FROM iniciar_punto_venta  WHERE id_sucursal = {$this->getId_sucursal()} AND estado = 1 ";
-		$resul = $this->db->query($sql);
-		return $resul;
-	}
-	public function IniciarVenta() {
-		$sql = "INSERT INTO iniciar_punto_venta VALUES (NULL,"
-                        . "{$this->getId_sucursal()},"
-                        . "'{$this->getFechainicio()}',"
-                        . "'{$this->getFechacierre()}',"
-                        . "{$this->getBasecaja()},"
-                        . "{$this->getTotalingresos()},"
-                        . "{$this->getTotalgastos()},"
-                        . "{$this->getOtrosmedio()},"
-                        . "{$this->getNoexistente()},"
-                        . "{$this->getPlansepare()},"
-                        . "{$this->getAbonocliente()},"
-                        . "{$this->getDevolucion()},"           
-                        . "{$this->getMontoentregado()},"
-                        . "{$this->getDiferencia()},"
-                        . "{$this->getEstado()})";
-                        
-		$resul = $this->db->query($sql);
-		$respt = FALSE;
-		if($resul){
-			$respt = TRUE;
-		}
-		return $respt;
-	}
-	public function CerrarVenta() {
-		$sql = "UPDATE iniciar_punto_venta SET "
-                        . "fecha_cierre='{$this->getFechacierre()}',"
-                        . "totalingresos={$this->getTotalingresos()},"
-                        . "totalgastos={$this->getTotalgastos()},"
-                        . "otrosmedio = {$this->getOtrosmedio()},"
-                        . "noexistente = {$this->getNoexistente()},"
-                        . "plansepare = {$this->getPlansepare()},"
-                        . "abonoscliente = {$this->getAbonocliente()},"
-                        . "devolucion= {$this->getDevolucion()},"
-                        . "montoentregado={$this->getMontoentregado()},"
-                        . "diferencia={$this->getDiferencia()}, "
-                        . "estado={$this->getEstado()} "
-                        . "WHERE id = {$this->getId()}";
-                        
-		$resul = $this->db->query($sql);
-		$respt = FALSE;
-		if($resul){
-			$respt = TRUE;
-		}
-		return $respt;
-	}
+    function setEstado($estado) {
+        $this->estado = $estado;
+    }
+
+    public function __construct() {
+        $this->db = Database::connect();
+    }
+
+    public function MostrarCierres() {
+        $sql = "SELECT * FROM iniciar_punto_venta  WHERE id_sucursal = {$this->getId_sucursal()} AND estado = 0 ORDER BY id DESC";
+        $resul = $this->db->query($sql);
+        return $resul;
+    }
+
+    public function MostrarCierresActivos() {
+        $sql = "SELECT * FROM iniciar_punto_venta  "
+                . "WHERE id_sucursal = {$this->getId_sucursal()} "
+                . "AND estado = 1";
+        $resul = $this->db->query($sql);
+        return $resul;
+    }
+
+    public function VerCierres() {
+        $sql = "SELECT * FROM iniciar_punto_venta  WHERE id = {$this->getId()}";
+        $resul = $this->db->query($sql);
+        return $resul;
+    }
+
+    public function VerificarFecha($id, $fechaFinal) {
+
+        $sql = "SELECT * FROM iniciar_punto_venta WHERE fecha_inicio like '%$fechaFinal%' AND id_sucursal = $id";
+        $resul = $this->db->query($sql);
+        return $resul;
+    }
+
+    public function ventasActivas() {
+        $sql = "SELECT * FROM iniciar_punto_venta  WHERE id_sucursal = {$this->getId_sucursal()} AND estado = 1 ";
+        $resul = $this->db->query($sql);
+        return $resul;
+    }
+
+    public function IniciarVenta() {
+        $sql = "INSERT INTO iniciar_punto_venta VALUES (NULL,"
+                . "{$this->getId_sucursal()},"
+                . "'{$this->getFechainicio()}',"
+                . "'{$this->getFechacierre()}',"
+                . "{$this->getBasecaja()},"
+                . "{$this->getTotalingresos()},"
+                . "{$this->getTotalgastos()},"
+                . "{$this->getOtrosmedio()},"
+                . "{$this->getNoexistente()},"
+                . "{$this->getPlansepare()},"
+                . "{$this->getAbonocliente()},"
+                . "{$this->getDevolucion()},"
+                . "{$this->getMontoentregado()},"
+                . "{$this->getDiferencia()},"
+                . "{$this->getEstado()})";
+
+        $resul = $this->db->query($sql);
+        $respt = FALSE;
+        if ($resul) {
+            $respt = TRUE;
+        }
+        return $respt;
+    }
+
+    public function CerrarVenta() {
+        $sql = "UPDATE iniciar_punto_venta SET "
+                . "fecha_cierre='{$this->getFechacierre()}',"
+                . "totalingresos={$this->getTotalingresos()},"
+                . "totalgastos={$this->getTotalgastos()},"
+                . "otrosmedio = {$this->getOtrosmedio()},"
+                . "noexistente = {$this->getNoexistente()},"
+                . "plansepare = {$this->getPlansepare()},"
+                . "abonoscliente = {$this->getAbonocliente()},"
+                . "devolucion= {$this->getDevolucion()},"
+                . "montoentregado={$this->getMontoentregado()},"
+                . "diferencia={$this->getDiferencia()}, "
+                . "estado={$this->getEstado()} "
+                . "WHERE id = {$this->getId()}";
+
+        $resul = $this->db->query($sql);
+        $respt = FALSE;
+        if ($resul) {
+            $respt = TRUE;
+        }
+        return $respt;
+    }
+
 }

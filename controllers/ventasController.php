@@ -1076,6 +1076,12 @@ class ventasController {
 
 
          $id_venta = $_GET['id'];
+         //eliminar abonos aplicados
+         $abonoFactura = new AbonosCliente();
+         $abonoFactura->setId_factura($id_venta);
+         $abonoFactura->EliminarbonoIdFactura();
+         
+         
          //ver la venta anterios
          $ventAnt = new Venta();
          $ventAnt->setId($id_venta);

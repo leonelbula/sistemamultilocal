@@ -110,6 +110,15 @@ class AbonosPlanSepare{
       }
       return $result;
    }
+   public function EliminarAbonosAplicados() {
+		$sql = "DELETE FROM plansepare WHERE id_registro = {$this->getId_cliente()}";
+		$resp = $this->db->query($sql);
+		$resul = FALSE;
+		if($resp){
+			$resul = TRUE;
+		}
+		return $resul;
+	}
 
    public function AbonosDiarios($idsucursal, $fechaInicial, $fechaFinal) {
 

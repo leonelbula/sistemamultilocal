@@ -97,7 +97,16 @@ class AbonosCliente {
    }
 
    public function Eliminarbono() {
-      $sql = "DELETE FROM abono_venta  WHERE id = {$this->getId()};";
+      $sql = "DELETE FROM abono_venta  WHERE id = {$this->getId()}";
+      $resp = $this->db->query($sql);
+      $result = FALSE;
+      if ($resp) {
+         $result = TRUE;
+      }
+      return $result;
+   }
+   public function EliminarbonoIdFactura() {
+      $sql = "DELETE FROM abono_venta  WHERE id_factura = {$this->getId_factura()}";
       $resp = $this->db->query($sql);
       $result = FALSE;
       if ($resp) {
